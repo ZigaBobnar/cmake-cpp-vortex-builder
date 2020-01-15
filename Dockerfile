@@ -8,7 +8,7 @@ RUN apt-get update \
     python3 \
     python3-pip
 
-Install boost 1.72.0
+# Install boost 1.72.0
 RUN cd /opt \
     && wget https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz \
     && tar xf boost_1_72_0.tar.gz \
