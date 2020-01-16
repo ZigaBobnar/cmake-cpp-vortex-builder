@@ -5,6 +5,7 @@ RUN apt-get update \
     sudo \
     wget \
     git \
+    openssl \
     python3 \
     python3-pip
 
