@@ -44,3 +44,14 @@ RUN apt-get install -y libsasl2-dev \
     && make install \
     && cd ../.. \
     && rm -rf mongo-c-driver*
+
+# Install mongoxcc 3.4.0
+RUN cd /usr/local/src \
+    && wget https://github.com/mongodb/mongo-cxx-driver/archive/r3.4.0.tar.gz \
+    && tar -xzf r3.4.0.tar.gz \
+    && cd mongo-cxx-driver-r3.4.0/build \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .. \
+    && make -j8 \
+    && make install \
+    && cd ../.. \
+    && rm -rf r3.4.0.tar.gz mongo-cxx-driver-r3.4.0
