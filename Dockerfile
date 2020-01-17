@@ -30,3 +30,17 @@ RUN cd /usr/local/src \
     && make install \
     && cd .. \
     && rm -rf cmake*
+
+# Install mongo-c-driver 1.16.0
+RUN apt-get install -y libsasl2-dev \
+    && cd /usr/local/src \
+    && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.0/mongo-c-driver-1.16.0.tar.gz \
+    && tar xzf mongo-c-driver-1.16.0.tar.gz \
+    && cd mongo-c-driver-1.16.0 \
+    && mkdir cmake-build \
+    && cd cmake-build \
+    && cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF .. \
+    && make -j8 \
+    && make install \
+    && cd ../.. \
+    && rm -rf mongo-c-driver*
