@@ -6,6 +6,7 @@ RUN apt-get update \
     wget \
     git \
     openssl \
+    libssl-dev \
     python3 \
     python3-pip
 
@@ -15,7 +16,7 @@ RUN cd /opt \
     && tar xf boost_1_72_0.tar.gz \
     && cd boost_1_72_0 \
     && ./bootstrap.sh \
-    && ./b2 \
+    && ./b2 -j 8 \
     && cd .. \
     && rm boost_1_72_0.tar.gz
 
@@ -25,7 +26,7 @@ RUN cd /usr/local/src \
     && tar xvf cmake-3.16.2.tar.gz \
     && cd cmake-3.16.2 \
     && ./bootstrap \
-    && make \
+    && make -j8 \
     && make install \
     && cd .. \
     && rm -rf cmake*
