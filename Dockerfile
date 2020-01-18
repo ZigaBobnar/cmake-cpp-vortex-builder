@@ -45,7 +45,7 @@ RUN apt-get install -y libsasl2-dev \
     && cd ../.. \
     && rm -rf mongo-c-driver*
 
-# Install mongoxcc 3.4.0
+# Install mongocxx 3.4.0
 RUN cd /usr/local/src \
     && wget https://github.com/mongodb/mongo-cxx-driver/archive/r3.4.0.tar.gz \
     && tar -xzf r3.4.0.tar.gz \
