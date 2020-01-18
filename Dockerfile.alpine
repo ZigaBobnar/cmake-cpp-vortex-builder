@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk add --no-cache cmake \
     gcc \
     boost \
+    boost-dev \
     git \
     perl \
     build-base \
