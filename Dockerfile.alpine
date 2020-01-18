@@ -1,3 +1,31 @@
 FROM alpine:latest
 
-RUN apk add cmake gcc boost git
+RUN apk add --no-cache cmake \
+    gcc \
+    boost \
+    git \
+    build-base \
+    openssl-dev
+
+# Install mongo-c-driver 1.16.0
+RUN cd /tmp \
+    && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.16.0/mongo-c-driver-1.16.0.tar.gz \
+    && tar -xzf mongo-c-driver-1.16.0.tar.gz \
+    && cd mongo-c-driver-1.16.0 \
+    && mkdir cmake-build \
+    && cd cmake-build \
+    && cmake -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_LIBDIR=lib \
+          -DENABLE_BSON:STRING=ON \
+          -DENABLE_MONGOC:BOOL=ON \
+          -DENABLE_SSL:STRING=OPENSSL \
+          -DENABLE_AUTOMATIC_INIT_AND_CLEANUP:BOOL=OFF \
+          -DENABLE_MAN_PAGES:BOOL=OFF \
+          -DENABLE_TESTS:BOOL=ON \
+          -DENABLE_EXAMPLES:BOOL=OFF \
+          -DCMAKE_SKIP_RPATH=ON .. \
+    && make -j8 \
+    && make install \
+    && cd ../.. \
+    && rm -rf mongo-c-driver*
