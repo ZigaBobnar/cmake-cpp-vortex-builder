@@ -1,0 +1,3 @@
+FROM alpine:latest
+
+RUN apk add cmake gcc boost git
