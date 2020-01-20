@@ -43,3 +43,9 @@ RUN cd /tmp \
     && make install \
     && cd ../.. \
     && rm -rf r3.4.0.tar.gz mongo-cxx-driver-r3.4.0
+
+# Download nlohmann-json 3.7.3
+RUN cd /usr/local/include \
+    && mkdir nlohmann \
+    && cd nlohmann \
+    && wget https://github.com/nlohmann/json/releases/download/v3.7.3/json.hpp
