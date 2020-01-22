@@ -50,7 +50,7 @@ RUN cd /usr/local/include \
     && cd nlohmann \
     && wget https://github.com/nlohmann/json/releases/download/v3.7.3/json.hpp
 
-# Download and install cpp_redis
+# Install cpp_redis
 RUN cd /tmp \
     && git clone https://github.com/cpp-redis/cpp_redis.git \
     && cd cpp_redis \
@@ -63,3 +63,21 @@ RUN cd /tmp \
     && make install \
     && cd ../.. \
     && rm -rf cpp_redis
+
+# Install duktape 2.5.0
+RUN cd /tmp \
+    && wget https://duktape.org/duktape-2.5.0.tar.xz \
+    && tar -xf duktape-2.5.0.tar.xz \
+    && cd duktape-2.5.0 \
+    && make -j8 -f Makefile.sharedlibrary \
+    && make -f Makefile.sharedlibrary install \
+    && cd .. \
+    && rm -rf duktape*
+
+# Download duktape-cpp
+RUN cd /tmp \
+    && git clone https://github.com/vmanucharyan/duktape-cpp.git \
+    && cd duktape-cpp \
+    && cp -r src/duktape-cpp /usr/local/include \
+    && cd .. \
+    && rm -rf duktape-cpp
