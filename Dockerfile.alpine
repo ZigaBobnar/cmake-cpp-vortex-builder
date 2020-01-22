@@ -49,3 +49,17 @@ RUN cd /usr/local/include \
     && mkdir nlohmann \
     && cd nlohmann \
     && wget https://github.com/nlohmann/json/releases/download/v3.7.3/json.hpp
+
+# Download and install cpp_redis
+RUN cd /tmp \
+    && git clone https://github.com/cpp-redis/cpp_redis.git \
+    && cd cpp_redis \
+    && git submodule init \
+    && git submodule update \
+    && mkdir build \
+    && cd build \
+    && cmake -DCMAKE_BUILD_TYPE=Release .. \
+    && make -j8 \
+    && make install \
+    && cd ../.. \
+    && rm -rf cpp_redis
