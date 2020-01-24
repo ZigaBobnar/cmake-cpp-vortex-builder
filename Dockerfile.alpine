@@ -81,3 +81,13 @@ RUN cd /tmp \
     && cp -r src/duktape-cpp /usr/local/include \
     && cd .. \
     && rm -rf duktape-cpp
+
+# Install crypto++ 8.2.0
+RUN cd /tmp \
+    && wget https://github.com/weidai11/cryptopp/archive/CRYPTOPP_8_2_0.tar.gz \
+    && tar -xzf CRYPTOPP_8_2_0.tar.gz \
+    && cd cryptopp-CRYPTOPP_8_2_0 \
+    && make -j8 \
+    && make install \
+    && cd .. \
+    && rm -rf cryptopp* CRYPTOPP*
