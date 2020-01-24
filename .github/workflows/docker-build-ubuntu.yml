@@ -1,4 +1,4 @@
-name: Build Docker image
+name: Build Docker Ubuntu image
 
 on:
   push:
@@ -19,5 +19,6 @@ jobs:
         name: zigabobnar/cmake-cpp-vortex-builder
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: "latest"
+        dockerfile: Dockerfile.ubuntu
+        tags: "ubuntu"
         cache: ${{ github.event_name != 'schedule' }}

@@ -1,4 +1,4 @@
-name: Build Docker alpine image
+name: Build Docker Alpine image
 
 on:
   push:
@@ -20,5 +20,5 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile.alpine
-        tags: "alpine"
+        tags: "alpine,latest"
         cache: ${{ github.event_name != 'schedule' }}
