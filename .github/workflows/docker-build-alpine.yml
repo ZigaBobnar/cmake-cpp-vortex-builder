@@ -16,7 +16,7 @@ jobs:
     - name: Build the Docker image and publish to registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: zigabobnar/cmake-cpp-vortex-builder
+        name: d0si/cmake-cpp-vortex-builder
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile.alpine

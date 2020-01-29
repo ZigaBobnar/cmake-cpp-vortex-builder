@@ -7,4 +7,4 @@ before_install:
     - docker pull alpine:latest
 
 script:
-    - docker build -t zigabobnar/cmake-cpp-vortex-builder:alpine -f Dockerfile.alpine .
+    - docker build -t d0si/cmake-cpp-vortex-builder:alpine -f Dockerfile.alpine .
