@@ -12,7 +12,7 @@ RUN apt-get update \
 
 # Install boost 1.72.0
 RUN cd /opt \
-    && wget https://github.com/boostorg/boost/archive/boost-1.72.0.zip \
+    && wget https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz \
     && tar xf boost_1_72_0.tar.gz \
     && cd boost_1_72_0 \
     && ./bootstrap.sh \
