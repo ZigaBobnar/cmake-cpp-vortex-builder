@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 2 * * *' # Daily at 02:00
+    - cron: '0 3 * * 0' # Weekly on Sunday at 03:00
 
 jobs:
   update:

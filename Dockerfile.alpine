@@ -7,7 +7,9 @@ RUN apk add --no-cache cmake \
     git \
     perl \
     build-base \
-    openssl-dev
+    openssl-dev \
+    spdlog \
+    spdlog-dev
 
 # Install mongo-c-driver 1.16.0
 RUN cd /tmp \
